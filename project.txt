@@ -1,0 +1,28 @@
+//import
+import Map "mo-base/Hashmap";
+import Text "mo-base/Text";
+
+//actor=> smart protocol
+actor {
+  type Name = Text;
+  type Phone = Text;
+
+  type Entry = {
+    desc : Text;
+    phone : Phone;
+  };
+
+  // variables
+  let phoneInformations = Map.HashMap<Name, Entry>(0, Text.equal, Text.hash);
+  //queries
+  //update
+  //async()
+
+  public func insert(name : Name, entry : Entry) : async () {
+    phoneInformations.put(name, entry);
+  };
+
+  public query func lookup(name : Name) : async ?Entry {
+    phoneInformations.get(name);
+  };
+};
